@@ -25,20 +25,31 @@ Basic workflow
 ==============
 1. Export your Mendeley library as a bibtex file, e.g., ``test.bib``.
 
-    **NOTE:** You may want to test on a small export with only a few items first. 
- 
-    **NOTE:** Some of the scripts work directly on the sqlite databases of both programs.
-    Always **backup** your sqlite files before letting this script change them.
+.. note::
+    You may want to test on a small export with only a few items first. 
 
-2. Fix the bibtex file using ``fix_mendeley_bibtex.py``::
+2. Fix the bibtex file using ``fix_mendeley_bibtex.py``:
+
+.. code-block:: shell
 
     python fix_mendeley_bibtex.py -i test.bib
 
 3. Import the resulting ``test_fixed.bib`` into Zotero.
 
-4. Transfer added date using ``mendeley2zotero.py``::
+4. Transfer added date using ``mendeley2zotero.py``:
+
+.. code-block:: shell
 
     python mendeley2zotero.py -m path/to/mendeley.sqlite -z path/to/zotero.sqlite
+
+.. note::
+    This script works directly on the sqlite databases of both programs.
+    Always **backup** your sqlite files before letting this script change them.
+
+.. note::
+    In macOS, the default location for Mendeley sqlite file is
+    ``"/Users/your_name/Library/Application Support/Mendeley Desktop/your_account@www.mendeley.com.sqlite"``,
+    whereas the default location for Zotero sqlite file is ``/Users/your_name/Zotero/zotero.sqlite``.
 
 5. Check your Zotero library to see whether there are remaining problems.
 
